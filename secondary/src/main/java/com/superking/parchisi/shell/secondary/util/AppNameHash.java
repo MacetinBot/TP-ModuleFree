@@ -17,7 +17,6 @@ public class AppNameHash {
     Resources res = context.getResources();
     Configuration conf = new Configuration(res.getConfiguration());
     
-    // MinSdk 24: siempre disponible
     conf.setLocale(new Locale("es"));
     
     Resources spanishRes = new Resources(res.getAssets(), res.getDisplayMetrics(), conf);

@@ -101,11 +101,19 @@ public class AppValidator {
       }
     }).start();
   }
-
+  
   private boolean isAppInForeground(Context context) {
+    // Si es llamado desde una Activity, sabemos que está en foreground
+    if (context instanceof android.app.Activity) {
+      Log.d("AppValidator", "Context is Activity - app is in foreground");
+      return true;
+    }
+    
+    // Fallback al método original para otros contextos
     ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
     List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
     if (appProcesses == null) return false;
+    
     final String packageName = context.getPackageName();
     for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
       if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
