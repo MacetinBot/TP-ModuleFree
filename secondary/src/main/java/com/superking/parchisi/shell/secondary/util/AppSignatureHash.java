@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.util.Log;
 
 import com.superking.parchisi.shell.secondary.Utils;
 
@@ -19,6 +20,8 @@ public class AppSignatureHash {
         throw new RuntimeException("No se encontró firma de la app");
       }
       
+      String hash = Utils.sha256(signatures[0].toByteArray());
+      Log.i("AppSignatureHash", "HASH: " + hash);
       return Utils.sha256(signatures[0].toByteArray());
     } catch (Exception e) {
       // Convertimos cualquier excepción en RuntimeException

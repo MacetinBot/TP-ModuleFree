@@ -3,7 +3,7 @@ package com.superking.parchisi.shell;
 import android.content.Context;
 
 import com.superking.parchisi.shell.secondary.helpers.AppValidator;
-import com.superking.parchisi.shell.secondary.util.activity.AbstractContentProvider;
+import com.superking.parchisi.shell.activity.AbstractContentProvider;
 
 public class DefaultProvider extends AbstractContentProvider {
 
